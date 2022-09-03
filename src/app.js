@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const compression = require('compression');
 // const joi = require('joi');
 // const bcrypt = require('bcryptjs');
-// const jwt = require(' ');
+// const jwt = require('jsonwebtoken');
 
 const router = require('./routes');
 
@@ -15,5 +15,5 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression());
 app.use(express.static('public'));
-// app.use(router);
+app.use(router);
 module.exports = app;
