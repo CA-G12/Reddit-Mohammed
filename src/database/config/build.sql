@@ -1,6 +1,6 @@
 BEGIN ;
 
-drop table if exists users, posts, comments, communities, user_community cascade;
+drop table if exists users, posts, comments, communities, user_community, votes cascade;
 
 create table users (
     id serial primary key,
@@ -30,7 +30,6 @@ create table posts (
     title text  not null,
     content text  not null, 
     image text,
-    vote int not null default 0,
     created_at timestamp not null default CURRENT_TIMESTAMP,
     user_id int not null, 
     community_id int not null,
@@ -46,5 +45,11 @@ create table comments (
     foreign key (user_id) references users(id) on delete cascade,
     foreign key (post_id) references posts(id) on delete cascade
 );
-
+CREATE TABLE votes(
+    id int primary key,
+    user_id int not null,
+    post_id int not null,
+    foreign key (post_id) references posts(id) on delete cascade
+    foreign key (user_id) references users(id) on delete cascade,
+);
 COMMIT;
