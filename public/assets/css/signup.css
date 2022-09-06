@@ -1,0 +1,18 @@
+.signup {
+    display: flex;
+    flex-direction:  column;
+}
+
+#emailError  {
+    display: none;
+    color: red;
+}
+#inputError {
+    display: none;
+    color: red;
+}
+
+#usernameError{
+    display: none;
+    color: red;
+}

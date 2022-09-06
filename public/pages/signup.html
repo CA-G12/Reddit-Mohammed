@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/signup.css">
+    <title>SignUp</title>
+</head>
+<body>
+    <form class="signup">
+    <label for="email">Email</label>
+    <input type="text" name ="email" id="email">
+    <p id="emailError">That email is already taken</p>
+    <label for="username">username</label>
+    <input type="text" name ="username" id="username">
+      <p id="usernameError">That username is already taken</p>
+    <label for="password" type="password">Password</label>
+    <input type="password" name ="password" id="password">
+    
+    <label for="confirmPassowrd" type="password">confirm Password</label>
+    <input type="password" name ="confirmPassword" id="confirmPassword">
+    <button id="submit">SignUp</button>
+    <p id="inputError"></p>
+</form>
+<script src="../assets/js/signup/logic.js"></script>
+<script src="../assets/js/signup/dom.js"></script>
+</body>
+</html>
