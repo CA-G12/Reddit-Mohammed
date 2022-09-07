@@ -37,3 +37,4 @@ jobs:
         env:
           TEST_DB_URL: postgres://user1:password@postgres:5432/test_reddit
           NODE_ENV: test
+          SECRET_TOKEN: ${{ secret.SECRET_TOKEN }}
