@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const emailInput = document.getElementById('email');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');

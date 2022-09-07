@@ -1,10 +1,13 @@
 const supertest = require('supertest');
 const connection = require('../src/database/config/connection');
-const dbBuild = require('../src/database/config/build');
+const { dbBuild } = require('../src/database/config/build');
 const router = require('../src/app');
 const validateInputs = require('../public/assets/js/signup/logic');
-// beforeEach(() => dbBuild());
-// afterAll(() => connection.end());
+
+beforeAll(() => {
+  dbBuild();
+});
+afterAll(() => connection.end());
 
 // Pure functions
 describe('Testing validateInputs should return true when the values are valid for username', () => {
@@ -111,5 +114,140 @@ describe('Testing validateInputs should return true when the values are valid fo
     const actual = validateInputs(/^(?=.*[0-9])(?=.*\W)[a-zA-Z0-9\W]{6,15}$/, '$$$123');
     const expected = true;
     expect(actual).toBe(expected);
+  });
+});
+
+describe('Route checkUserAuth should return status code 200', () => {
+  test('should return json file ', (done) => {
+    supertest(router)
+      .get('/checkUserAuth')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        if (err) done(err);
+        else done();
+      });
+  });
+});
+
+describe('signup route with status code 200', () => {
+  test('should return json file', (done) => {
+    supertest(router)
+      .post('/signup').send({
+        email: 'mohammed897@gmail.com',
+        username: 'mohammed12345',
+        password: '$password1234',
+        confirmPassword: '$password1234',
+      })
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        if (err) done(err);
+        else done();
+      });
+  });
+  test('should return json file with status code 400', (done) => {
+    supertest(router)
+      .post('/signup').send({
+        email: 'mohammed897@gmail.com',
+        username: 'mohammed12345',
+        password: '$password1234',
+        confirmPassword: '$password1234',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        if (err) done(err);
+        else {
+          expect(res.body.message).toEqual('Email already exists');
+          done();
+        }
+      });
+  });
+  test('should return json file with bad request', (done) => {
+    supertest(router)
+      .post('/signup').send({
+        email: 'mohammed897@gmail.com',
+        username: 'mohammed12345',
+        password: '$password1234',
+        confirmPassword: '$password1234',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        if (err) done(err);
+        else {
+          done();
+        }
+      });
+  });
+  test('should return json file with bad request error', (done) => {
+    supertest(router)
+      .post('/signup').send({
+        email: 'mohammed897@gmail.com',
+        username: 'mohammed12345',
+        password: 'password1234',
+        confirmPassword: '$password1234',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        if (err) done(err);
+        else {
+          done();
+        }
+      });
+  });
+  test('should return json file with bad request error', (done) => {
+    supertest(router)
+      .post('/signup').send({
+        email: 'mohammed897@gmail.',
+        username: 'mohammed12345',
+        password: 'password1234',
+        confirmPassword: '$password1234',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        if (err) done(err);
+        else {
+          expect(res.body.message).toEqual('"email" must be a valid email');
+          done();
+        }
+      });
+  });
+});
+describe('login route', () => {
+  test('should return bad request with status code 400 ', (done) => {
+    supertest(router)
+      .post('/login').send({
+        email: 'hmza@gm22ail.com',
+        password: 'moh1234$$5',
+      })
+      .expect(400)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        if (err) done(err);
+        else {
+          expect(res.body.message).toEqual('Password or username are not correct ');
+          done();
+        }
+      });
+  });
+  test('should return status code 200 ', (done) => {
+    supertest(router)
+      .post('/login').send({
+        email: 'mohammed897@gmail.com',
+        password: '$password1234',
+      })
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        if (err) done(err);
+        else {
+          expect(res.body.path).toEqual('../index.html');
+          done();
+        }
+      });
   });
 });

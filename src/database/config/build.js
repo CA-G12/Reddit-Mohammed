@@ -6,5 +6,9 @@ const dbBuild = () => {
   const sql = readFileSync(join(__dirname, 'build.sql')).toString();
   return connection.query(sql);
 };
+const seederBuild = () => {
+  const sql = readFileSync(join(__dirname, 'seeder.sql')).toString();
+  return connection.query(sql);
+};
 
-module.exports = dbBuild;
+module.exports = { dbBuild, seederBuild };
