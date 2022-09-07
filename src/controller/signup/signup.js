@@ -36,21 +36,3 @@ const signup = (req, res) => {
 };
 
 module.exports = signup;
-// .then(() => {
-//   checkEmailQuery(email)
-//     .then((data) => {
-//       if (data.rowCount > 0) {
-//         res.json(({ massage: 'email already exists' }));
-//       } else {
-//         bcrypt.hash(password, 10)
-//           .then((hashedPassword) => {
-//             addUserQuery(email, username, hashedPassword)
-//               . then((result) => result.rows[0])
-//               .then((user) => createToken(user.id)
-//                 .then((token) => {
-//                   res.cookie('token', token, { httpOnly: true, secure: true }).json({ massage: 'Your Account Created Successfully' });
-//                 }).catch((err) => console.log(err)));
-//           });
-//       }
-//     }).catch((err) => console.log(err));
-// }).catch((err) => console.log(`${err}ssss`));

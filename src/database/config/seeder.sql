@@ -6,7 +6,40 @@ insert into users (
     values 
     (
     'mohammed12',
-    'mohammed@gmail.com',
+    '',
+    'moh12345'
+);
+insert into users (
+    username,
+    email,
+    password
+    ) 
+    values 
+    (
+    'mohamm22ed12',
+    'mohamme22d@gmail.com',
+    'moh12345'
+);
+insert into users (
+    username,
+    email,
+    password
+    ) 
+    values 
+    (
+    'moha222mm22ed12',
+    'mohamm22e22d@gmail.com',
+    'moh12345'
+);
+insert into users (
+    username,
+    email,
+    password
+    ) 
+    values 
+    (
+    'mohamm2211ed12',
+    'mohamme2211d@gmail.com',
     'moh12345'
 );
 insert into users (
@@ -47,6 +80,17 @@ insert into users (
     'hmza',
     'hmza@gmail.com',
     'moh12345'
+);
+insert into users (
+    username,
+    email,
+    password
+    ) 
+    values 
+    (
+    'hmza123',
+    'hmza@gm22ail.com',
+    'moh1234$$5'
 );
 insert into communities (
     name,
@@ -245,7 +289,6 @@ insert into posts (
     title,
     content,
     image,
-    vote,
     user_id,
     community_id
     ) 
@@ -254,7 +297,6 @@ insert into posts (
     'messi is not best player',
     'messi is not best player',
     'https://library.sportingnews.com/styles/twitter_card_120x120/s3/2022-05/CristianoRonaldo%20-%20cropped.jpg?itok=zey63ZFY',
-    5,
     2,
     1
 
@@ -281,4 +323,71 @@ insert into comments (
     'comment from user 2 to post 1',
     2,
     1
+);
+
+
+insert into votes (
+   user_id,
+   post_id
+)
+values (
+    2,
+    1
+);
+insert into votes (
+   user_id,
+   post_id
+)
+values (
+    3,
+    1
+);
+
+insert into votes (
+   user_id,
+   post_id
+)
+values (
+    2,
+   2
+);
+insert into votes (
+   user_id,
+   post_id
+)
+values (
+    4,
+   1
+);
+insert into votes (
+   user_id,
+   post_id
+)
+values (
+    4,
+   3
+);
+insert into votes (
+   user_id,
+   post_id
+)
+values (
+    5,
+   3
+);
+insert into votes (
+   user_id,
+   post_id
+)
+values (
+    6,
+   3
+);
+insert into votes (
+   user_id,
+   post_id
+)
+values (
+    7,
+   3
 );

@@ -15,7 +15,7 @@ create table communities (
   name varchar(21),
   created_at timestamp not null default CURRENT_TIMESTAMP,
   about text,
-  image text default 'https://miro.medium.com/max/1200/1*M-b093jQIpmapIIaxH7N7g.jpeg',
+  image text default 'https://miro.medium.com/max/1200/1*M-b093jQIpmapIIaxH7N7g.jpeg'
 );
 create table user_community(
   id serial primary key,
@@ -46,10 +46,10 @@ create table comments (
     foreign key (post_id) references posts(id) on delete cascade
 );
 CREATE TABLE votes(
-    id int primary key,
     user_id int not null,
     post_id int not null,
-    foreign key (post_id) references posts(id) on delete cascade
-    foreign key (user_id) references users(id) on delete cascade,
+    PRIMARY KEY(user_id, post_id),
+    foreign key (post_id) references posts(id) on delete cascade,
+    foreign key (user_id) references users(id) on delete cascade
 );
 COMMIT;
