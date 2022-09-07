@@ -11,6 +11,8 @@ const createPost = require('./Home/createPost');
 const getPost = require('./postDetails/postDetails');
 const getComments = require('./postDetails/getComments');
 
+const getUserPosts = require('./profile');
+
 module.exports = {
   signup,
   checkUsername,
@@ -21,4 +23,5 @@ module.exports = {
   createPost,
   getPost,
   getComments,
+  getUserPosts,
 };

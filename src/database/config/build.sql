@@ -6,7 +6,8 @@ create table users (
     id serial primary key,
     username varchar(20) not null,
     email  varchar(255) not null unique, 
-    password text  not null, 
+    password text  not null,
+    about text, 
     image text default 'https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg'
 );
 

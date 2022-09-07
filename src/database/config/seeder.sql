@@ -73,13 +73,15 @@ insert into users (
 insert into users (
     username,
     email,
-    password
+    password,
+    about
     ) 
     values 
     (
     'hmza',
     'hmza@gmail.com',
-    'moh12345'
+    'moh12345',
+    'Hello I am hamza, l love programming and I hate design and css'
 );
 insert into users (
     username,
