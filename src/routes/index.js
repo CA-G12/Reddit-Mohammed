@@ -2,7 +2,7 @@ const router = require('express').Router();
 const verifyToken = require('../middleware/verifyToken');
 const {
   signup, checkUsername, checkUserEmail, login,
-  checkUserAuth, getAllPosts, createPost, getPost, getComments,
+  checkUserAuth, getAllPosts, createPost, getPost, getComments, getUserPosts,
 } = require('../controller');
 
 // Home
@@ -20,5 +20,8 @@ router.post('/login', login);
 // PostDetails
 router.get('/post/:id', getPost);
 router.get('/comments/:id', getComments);
+
+// Profile
+router.get('/user/posts/:id?', verifyToken, getUserPosts);
 
 module.exports = router;
