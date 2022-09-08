@@ -330,66 +330,63 @@ insert into comments (
 
 insert into votes (
    user_id,
-   post_id
+   post_id,
+   vote
 )
 values (
     2,
-    1
+    1,
+    0
 );
 insert into votes (
    user_id,
-   post_id
+   post_id,
+   vote
 )
 values (
     3,
+    1,
     1
 );
 
 insert into votes (
    user_id,
-   post_id
+   post_id,
+   vote
 )
 values (
     2,
-   2
-);
-insert into votes (
-   user_id,
-   post_id
-)
-values (
-    4,
+   2,
    1
 );
 insert into votes (
    user_id,
-   post_id
+   post_id,
+   vote
+)
+values (
+    1,
+   2,
+   -1
+);
+
+insert into votes (
+   user_id,
+   post_id,
+   vote
 )
 values (
     4,
-   3
+    3,
+   -1
 );
 insert into votes (
    user_id,
-   post_id
+   post_id,
+   vote
 )
 values (
-    5,
-   3
-);
-insert into votes (
-   user_id,
-   post_id
-)
-values (
-    6,
-   3
-);
-insert into votes (
-   user_id,
-   post_id
-)
-values (
-    7,
-   3
+    4,
+    1,
+   -1
 );
