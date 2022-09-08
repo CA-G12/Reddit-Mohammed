@@ -1,7 +1,14 @@
 const { checkEmailQuery, addUserQuery, checkUsernameQuery } = require('./signupQuery');
+
 const loginQuery = require('./loginQuery');
-const { getAllPostsQuery, createPostQuery } = require('./HomePageQueries');
+
+const {
+  getAllPostsQuery, createPostQuery, getVoteQuery, addVoteQuery, updateVoteQuery,
+  getVoteSum, getPostVotedByAuthUser,
+} = require('./HomePageQueries');
+
 const { getPostQuery, getCommentsQuery } = require('./postDetails');
+
 const getUserPostsQuery = require('./profile');
 
 module.exports = {
@@ -14,4 +21,9 @@ module.exports = {
   getPostQuery,
   getCommentsQuery,
   getUserPostsQuery,
+  getVoteQuery,
+  addVoteQuery,
+  updateVoteQuery,
+  getVoteSum,
+  getPostVotedByAuthUser,
 };

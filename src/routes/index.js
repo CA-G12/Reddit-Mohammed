@@ -2,13 +2,15 @@ const router = require('express').Router();
 const verifyToken = require('../middleware/verifyToken');
 const {
   signup, checkUsername, checkUserEmail, login,
-  checkUserAuth, getAllPosts, createPost, getPost, getComments, getUserPosts,
+  checkUserAuth, getAllPosts, createPost, getPost, getComments, getUserPosts, handleVote,
 } = require('../controller');
 
 // Home
 router.get('/checkUserAuth', verifyToken, checkUserAuth);
-router.get('/posts', getAllPosts);
+router.get('/posts', verifyToken, getAllPosts);
 router.post('/post', verifyToken, createPost);
+// votes
+router.post('/vote/add', verifyToken, handleVote);
 
 // signUp
 router.post('/email', checkUserEmail);

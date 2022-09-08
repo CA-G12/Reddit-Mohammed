@@ -7,6 +7,7 @@ const checkUserAuth = require('./userAuth');
 
 const getAllPosts = require('./Home/getAllPosts');
 const createPost = require('./Home/createPost');
+const handleVote = require('./Home/votes/handleVote');
 
 const getPost = require('./postDetails/postDetails');
 const getComments = require('./postDetails/getComments');
@@ -24,4 +25,5 @@ module.exports = {
   getPost,
   getComments,
   getUserPosts,
+  handleVote,
 };

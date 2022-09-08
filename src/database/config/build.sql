@@ -49,8 +49,10 @@ create table comments (
 CREATE TABLE votes(
     user_id int not null,
     post_id int not null,
+    vote int not null default 0,
     PRIMARY KEY(user_id, post_id),
     foreign key (post_id) references posts(id) on delete cascade,
     foreign key (user_id) references users(id) on delete cascade
 );
+
 COMMIT;

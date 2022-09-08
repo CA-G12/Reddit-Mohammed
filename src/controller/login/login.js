@@ -6,19 +6,20 @@ const { CustomError } = require('../../../errors');
 const { loginValidation } = require('../modules/Validation');
 
 const login = (req, res) => {
+  let id;
   const { email, password } = req.body;
   loginValidation(email, password).then(() => loginQuery(email))
     .then((result) => {
       if (result.rowCount === 0) {
         throw new CustomError('Password or username are not correct ', 400);
       }
-
+      id = result.rows[0].id;
       const hashed = result.rows[0].password;
       return bcrypt.compare(password, hashed);
     })
     .then((data) => {
       if (!data) throw new CustomError('Password or username are not correct ', 400);
-      return generateToken();
+      return generateToken(id);
     })
     .then((token) => res.cookie('token', token, { httpOnly: true, secure: true }).json({ path: '../index.html' }))
     .catch((err) => {
