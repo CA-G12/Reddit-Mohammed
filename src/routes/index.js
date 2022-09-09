@@ -6,12 +6,14 @@ const {
   getComments, getUserPosts, handleVote,
   logout, updateBio, deletePost,
   getBio, addComment,
+  search,
 } = require('../controller');
 
 // Home
 router.get('/checkUserAuth', verifyToken, checkUserAuth);
 router.get('/posts', verifyToken, getAllPosts);
 router.post('/post', verifyToken, createPost);
+router.get('/search/:value', search);
 // votes
 router.post('/vote/add', verifyToken, handleVote);
 
