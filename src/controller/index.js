@@ -10,6 +10,7 @@ const logout = require('./Home/logout');
 const getAllPosts = require('./Home/getAllPosts');
 const createPost = require('./Home/createPost');
 const handleVote = require('./Home/votes/handleVote');
+const search = require('./Home/search');
 
 const getPost = require('./postDetails/postDetails');
 const deletePost = require('./postDetails/deletePost');
@@ -38,4 +39,5 @@ module.exports = {
   updateBio,
   getBio,
   addComment,
+  search,
 };

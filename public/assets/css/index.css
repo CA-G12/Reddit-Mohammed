@@ -5,3 +5,16 @@ body{
     display: flex;
     justify-content: space-evenly;
 }
+
+
+.search-input{
+    width: 20%; 
+    padding: 0.6rem 2rem;
+    font-size: 1rem;
+    border: 0ch;
+    background-color:white;
+    color: black;
+}
+.search-input::placeholder{
+    color: #d2b9b9;
+}

@@ -15,6 +15,13 @@ const createPostQuery = (title, content, image, userId) => connection.query(`ins
 (title,content,image,user_id,community_id)
 values ($1,$2,$3,$4,$5) returning *`, [title, content, image, userId, 1]);
 
+const searchQuery = (searchValue) => connection.query(
+  `select u.username, u.id as user_id , p.title, p.id  as post_id
+from users as u join posts as p on p.user_id = u.id
+where lower(u.username) like lower('%${searchValue}%')
+or  lower(p.title) like lower('%${searchValue}%');`,
+);
+
 // votes
 const getVoteQuery = (userId, postId) => connection.query(`select * from votes 
 where user_id = $1 and  post_id = $2`, [userId, postId]);
@@ -38,4 +45,5 @@ module.exports = {
   addVoteQuery,
   updateVoteQuery,
   getVoteSum,
+  searchQuery,
 };

@@ -146,24 +146,7 @@ describe('signup route with status code 200', () => {
         else done();
       });
   });
-  test('should return json file with status code 400', (done) => {
-    supertest(router)
-      .post('/signup').send({
-        email: 'mohammed897@gmail.com',
-        username: 'mohammed12345',
-        password: '$password1234',
-        confirmPassword: '$password1234',
-      })
-      .expect(400)
-      .expect('Content-Type', /json/)
-      .end((err, res) => {
-        if (err) done(err);
-        else {
-          expect(res.body.message).toEqual('Email already exists');
-          done();
-        }
-      });
-  });
+
   test('should return json file with bad request', (done) => {
     supertest(router)
       .post('/signup').send({

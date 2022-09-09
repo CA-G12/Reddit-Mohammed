@@ -11,7 +11,7 @@ const renderDom = (post, user, isAuth) => {
   const postContainer = createElement('div');
   const userImageForPost = createElement('img', user.image);
   const userNameEleForPost = createElement('p', user.username);
-  const createdAtEle = createElement('p', post.curr_date);
+  const createdAtEle = createElement('p', post.to_char);
   const postTitleEle = createElement('h3', post.title);
   const postContentEle = createElement('p', post.content);
 
@@ -39,7 +39,7 @@ const renderDom = (post, user, isAuth) => {
     });
     postContainer.append(deletePostBtn, UpdatePostBtn);
   }
-  userPostsContainer.append(userImageEle, userNameEle, aboutEle, postContainer);
+  userPostsContainer.append(userImageEle, postContainer);
 };
 let bioBtn;
 const getUserInfo = (data, aboutMassage, isAuth) => {
@@ -51,15 +51,18 @@ const getUserInfo = (data, aboutMassage, isAuth) => {
   userImageEle.src = data.user[0].image;
   userNameEle.textContent = data.user[0].username;
   if (isAuth) {
+    // Edit bio button for auth user
     bioBtn = createElement('button', 'Add Something');
     userInfoSection.append(bioBtn);
+    if (data.user[0].about) {
+      bioBtn.textContent = 'Edit Your Bio';
+    }
     bioBtn.addEventListener('click', () => {
       window.location.href = 'bio.html';
     });
   }
   if (data.user[0].about) {
     aboutEle.textContent = data.user[0].about;
-    bioBtn.textContent = 'Edit Your Bio';
   } else {
     aboutEle.textContent = aboutMassage;
   }
