@@ -3,14 +3,13 @@ const inputPost = document.getElementById('post-input');
 const LoginSection = document.getElementById('Log&sign');
 const postsContainer = document.getElementById('posts');
 const profilePage = document.getElementById('profile-page');
+const authSection = document.getElementById('auth-section');
 fetch('/checkUserAuth').then((res) => res.json()).then((res) => {
   if (res.massage) {
-    inputPost.style.visibility = 'visible';
-    profilePage.style.visibility = 'visible';
+    authSection.style.visibility = 'visible';
     LoginSection.style.visibility = 'hidden';
   } else {
-    inputPost.style.visibility = 'hidden';
-    profilePage.style.visibility = 'hidden';
+    authSection.style.visibility = 'hidden';
     LoginSection.style.visibility = 'visible';
   }
 });

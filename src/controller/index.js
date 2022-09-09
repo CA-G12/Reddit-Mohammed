@@ -5,14 +5,21 @@ const checkUserEmail = require('./signup/checkUserEmail');
 const login = require('./login/login');
 const checkUserAuth = require('./userAuth');
 
+const logout = require('./Home/logout');
+
 const getAllPosts = require('./Home/getAllPosts');
 const createPost = require('./Home/createPost');
 const handleVote = require('./Home/votes/handleVote');
 
 const getPost = require('./postDetails/postDetails');
+const deletePost = require('./postDetails/deletePost');
 const getComments = require('./postDetails/getComments');
+const addComment = require('./postDetails/addComment');
 
-const getUserPosts = require('./profile');
+const getUserPosts = require('./profile&bio/profile');
+const updateBio = require('./profile&bio/updateBio');
+
+const getBio = require('./profile&bio/getBio');
 
 module.exports = {
   signup,
@@ -26,4 +33,9 @@ module.exports = {
   getComments,
   getUserPosts,
   handleVote,
+  logout,
+  deletePost,
+  updateBio,
+  getBio,
+  addComment,
 };

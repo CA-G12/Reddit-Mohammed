@@ -10,4 +10,10 @@ const getCommentsQuery = (id) => connection.query(`select c.content as commentCo
    from comments as c join users as u 
    on c.user_id = u.id where c.post_id = $1`, [id]);
 
-module.exports = { getPostQuery, getCommentsQuery };
+const addCommentQuery = (userId, postId, comment) => connection.query(` insert into comments 
+(user_id,post_id,content) values ($1,$2,$3) returning *;
+`, [userId, postId, comment]);
+
+const deletePostQuery = (postId) => connection.query('delete from posts where id = $1', [postId]);
+
+module.exports = { getPostQuery, getCommentsQuery, deletePostQuery, addCommentQuery };

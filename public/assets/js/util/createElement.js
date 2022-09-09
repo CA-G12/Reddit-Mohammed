@@ -3,7 +3,7 @@ const createElement = (ele, text, classes) => {
   const element = document.createElement(ele);
   if (ele === 'img') {
     element.src = text;
-  } else {
+  } else if (text) {
     element.textContent = text;
   }
   if (classes !== undefined) {
