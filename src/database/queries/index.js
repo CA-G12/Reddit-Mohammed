@@ -7,9 +7,9 @@ const {
   getVoteSum, getPostVotedByAuthUser,
 } = require('./HomePageQueries');
 
-const { getPostQuery, getCommentsQuery } = require('./postDetails');
+const { getPostQuery, getCommentsQuery, deletePostQuery, addCommentQuery } = require('./postDetails');
 
-const getUserPostsQuery = require('./profile');
+const { getUserPostsQuery, getUserQuery, updateBioQuery } = require('./profile');
 
 module.exports = {
   checkEmailQuery,
@@ -26,4 +26,8 @@ module.exports = {
   updateVoteQuery,
   getVoteSum,
   getPostVotedByAuthUser,
+  deletePostQuery,
+  getUserQuery,
+  updateBioQuery,
+  addCommentQuery,
 };
