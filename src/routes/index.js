@@ -2,6 +2,7 @@ const router = require('express').Router();
 // Middleware
 const verifyToken = require('../middleware/verifyToken');
 const uploadFile = require('../middleware/upload');
+const cloudinaryUpload = require('../middleware/Cloudinary');
 // Controllers
 const {
   signup, checkUsername, checkUserEmail,
@@ -14,7 +15,7 @@ const {
 // Home
 router.get('/checkUserAuth', verifyToken, checkUserAuth);
 router.get('/posts', verifyToken, getAllPosts);
-router.post('/post', verifyToken, uploadFile().single('file'), createPost);
+router.post('/post', verifyToken, uploadFile().single('file'), cloudinaryUpload, createPost);
 router.put('/post/:id', verifyToken, updatePost);
 router.get('/search/:value', search);
 // votes
@@ -40,5 +41,5 @@ router.post('/comment/add', verifyToken, addComment);
 router.get('/user/posts/:id?', verifyToken, getUserPosts);// 1
 router.put('/user/bio', verifyToken, updateBio);
 router.get('/user/bio', verifyToken, getBio);
-router.post('/user/upload', verifyToken, uploadFile().single('file'), handleFile);
+router.post('/user/upload', verifyToken, uploadFile().single('file'), cloudinaryUpload, handleFile);
 module.exports = router;

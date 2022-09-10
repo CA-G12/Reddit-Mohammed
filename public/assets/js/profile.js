@@ -57,7 +57,7 @@ const getUserInfo = (data, aboutMassage, isAuth) => {
   }
 
   if (data.user[0].has_image) { // Get Uploaded Image
-    userImageEle.src = ` /images/${data.user[0].image}`;
+    userImageEle.src = data.user[0].image;
   } else { // Get Default Image
     userImageEle.src = data.user[0].image;
   }
@@ -119,7 +119,6 @@ uploadBtn.addEventListener('click', (e) => {
     body: formData,
   };
   fetch('/user/upload', packet).then((res) => res.json()).then((data) => {
-    console.log(` /images/${data.path}`);
-    userImageEle.src = ` /images/${data.path}`;
+    userImageEle.src = data.path;
   });
 });
