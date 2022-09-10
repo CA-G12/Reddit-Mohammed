@@ -6,10 +6,13 @@ const aboutEle = document.getElementById('about');
 const userNameEle = document.getElementById('user-name');
 const totalPostEle = document.getElementById('total-post');
 const userPostsContainer = document.getElementById('userPosts');
+const uploadBtn = document.getElementById('uploadBtn');
+const uploadImgInput = document.getElementById('uploadImgInput');
+
 // Handle Dom
 const renderDom = (post, user, isAuth) => {
   const postContainer = createElement('div');
-  const userImageForPost = createElement('img', user.image);
+  const userImageForPost = createElement('img', user.image, '', false);
   const userNameEleForPost = createElement('p', user.username);
   const createdAtEle = createElement('p', post.to_char);
   const postTitleEle = createElement('h3', post.title);
@@ -48,7 +51,13 @@ const getUserInfo = (data, aboutMassage, isAuth) => {
   } else {
     totalPostEle.textContent += data.posts[0].number_of_posts;
   }
-  userImageEle.src = data.user[0].image;
+
+  if (data.user[0].has_image) { // Get Uploaded Image
+    userImageEle.src = ` /images/${data.user[0].image}`;
+  } else { // Get Default Image
+    userImageEle.src = data.user[0].image;
+  }
+
   userNameEle.textContent = data.user[0].username;
   if (isAuth) {
     // Edit bio button for auth user
@@ -96,3 +105,16 @@ if (id) {
     }
   });
 }
+uploadBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  const formData = new FormData();
+
+  formData.append('file', uploadImgInput.files[0]);
+  const packet = {
+    method: 'POST',
+    body: formData,
+  };
+  fetch('/user/upload', packet).then((res) => res.json()).then((data) => {
+    userImageEle.src = ` /images/${data.path}`;
+  });
+});

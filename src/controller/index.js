@@ -19,8 +19,8 @@ const addComment = require('./postDetails/addComment');
 
 const getUserPosts = require('./profile&bio/profile');
 const updateBio = require('./profile&bio/updateBio');
-
 const getBio = require('./profile&bio/getBio');
+const handleFile = require('./profile&bio/uploadImage');
 
 module.exports = {
   signup,
@@ -40,4 +40,5 @@ module.exports = {
   getBio,
   addComment,
   search,
+  handleFile,
 };

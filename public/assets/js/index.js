@@ -30,12 +30,13 @@ const getPacket = (postId, voteValue) => {
 };
 
 const renderPosts = (object) => {
+  console.log(object);
   const postId = object.post_id;
   const userId = object.user_id;
   const userInfoContainer = createElement('div');
   // User information
   const usernameEle = createElement('p', object.username);
-  const userImgEle = createElement('img', object.userimage);
+  const userImgEle = createElement('img', object.userimage, '', object.has_image);
   userImgEle.addEventListener('click', () => {
     window.location.href = `./pages/profile.html?id=${userId}`;
   });

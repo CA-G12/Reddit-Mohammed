@@ -1,12 +1,15 @@
 const router = require('express').Router();
+// Middleware
 const verifyToken = require('../middleware/verifyToken');
+const uploadFile = require('../middleware/upload');
+// Controllers
 const {
   signup, checkUsername, checkUserEmail, login,
   checkUserAuth, getAllPosts, createPost, getPost,
   getComments, getUserPosts, handleVote,
   logout, updateBio, deletePost,
   getBio, addComment,
-  search,
+  search, handleFile,
 } = require('../controller');
 
 // Home
@@ -36,5 +39,5 @@ router.post('/comment/add', verifyToken, addComment);
 router.get('/user/posts/:id?', verifyToken, getUserPosts);// 1
 router.put('/user/bio', verifyToken, updateBio);
 router.get('/user/bio', verifyToken, getBio);
-
+router.post('/user/upload', verifyToken, uploadFile().single('file'), handleFile);
 module.exports = router;

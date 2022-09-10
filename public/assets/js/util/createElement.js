@@ -1,12 +1,13 @@
 // eslint-disable-next-line no-unused-vars
-const createElement = (ele, text, classes) => {
+const createElement = (ele, value, classes, hasImage) => {
   const element = document.createElement(ele);
   if (ele === 'img') {
-    element.src = text;
-  } else if (text) {
-    element.textContent = text;
+    // Get Uploaded Image,Else Get Default Image
+    if (hasImage) { element.src = `/images/${value}`; } else element.src = value;
+  } else if (value) {
+    element.textContent = value;
   }
-  if (classes !== undefined) {
+  if (classes !== undefined && classes !== '') {
     classes.forEach((className) => {
       element.classList.add(className);
     });

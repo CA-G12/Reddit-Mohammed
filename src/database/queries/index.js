@@ -12,7 +12,10 @@ const {
   getPostQuery, getCommentsQuery, deletePostQuery, addCommentQuery,
 } = require('./postDetails');
 
-const { getUserPostsQuery, getUserQuery, updateBioQuery } = require('./profile');
+const {
+  getUserPostsQuery, getUserQuery,
+  updateBioQuery, updateImageQuery,
+} = require('./profile');
 
 module.exports = {
   checkEmailQuery,
@@ -34,4 +37,5 @@ module.exports = {
   updateBioQuery,
   addCommentQuery,
   searchQuery,
+  updateImageQuery,
 };
