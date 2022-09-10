@@ -64,9 +64,8 @@ submit.addEventListener('click', () => {
 // Display data That Want Update IT
 if (urlId) {
   fetch(`/post/${urlId}`).then((data) => data.json()).then((data) => {
-    const post = data[0];
-    titleInput.value = post.title;
-    ContentInput.value = post.content;
+    titleInput.value = data.title;
+    ContentInput.value = data.content;
     submit.textContent = 'Update';
   });
 }
