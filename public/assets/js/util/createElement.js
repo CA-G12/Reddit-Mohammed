@@ -3,8 +3,8 @@ const createElement = (ele, value, classes, hasImage) => {
   const element = document.createElement(ele);
   if (ele === 'img') {
     // Get Uploaded Image,Else Get Default Image
-    console.log(`./images/${value}`);
-    if (hasImage) { element.src = `./images/${value}`; } else element.src = value;
+    console.log(`public/images/${value}`);
+    if (hasImage) { element.src = `public/images/${value}`; } else element.src = value;
   } else if (value) {
     element.textContent = value;
   }
