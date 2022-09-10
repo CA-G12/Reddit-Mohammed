@@ -2,7 +2,6 @@ const express = require('express');
 
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
-const multer = require('multer');
 
 const router = require('./routes');
 

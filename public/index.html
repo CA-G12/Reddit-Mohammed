@@ -5,14 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/index.css">
-    <title>Document</title>
+    <title>OLD Reddit</title>
 </head>
 <body>
-    <header>
-        <div><input type="text" id="search" placeholder="Search"></div>
-        <div id="results">
-
+    <header class="nav">
+        <div class="searchContainer"><input type="text" id="search" placeholder="Search">
+            <div id="results">
+                <p id="handleSearch"> You Have To login To Search </p>
+            </div>
         </div>
+ 
         <div id="auth-section">
         <input type="text" placeholder="Enter your post" id="post-input">
         <button id = 'profile-page'>My Profile</button> 
@@ -24,7 +26,7 @@
         <a href="./pages/signup.html"><button>signup</button></a>
  </div>
     </header>
-<section id = 'communities'></section>
+
 <section id="posts"></section>
 <script src="./assets/js/util/createElement.js"></script>
 <script src="./assets/js/index.js"></script>
