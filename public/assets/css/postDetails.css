@@ -1,0 +1,29 @@
+.main-nav{
+
+}
+.user-info , #userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px auto;
+    width: 70%;
+    padding: 25px;
+
+}
+h1 {
+
+}
+#user-Image {
+width: 300px;
+}
+#username{
+
+}
+#date{
+
+}
+#post-image{
+    width: 450px;
+}

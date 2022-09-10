@@ -2,7 +2,7 @@ const connection = require('../config/connection');
 
 const getAllPostsQuery = () => connection.query(`SELECT u.id as user_id,u.username , 
 u.image as userImage, u.has_Image 
-, p.id as post_id, p.title ,p.content, p.image as postImage,  
+, p.id as post_id, p.title ,p.content, p.image as postImage, 
 to_char(p.created_at,'YYYY-MM-DD at HH:MI:SS AM') as Curr_date, 
 coalesce (sum(v.vote),0) as total_votes
 from users as u join posts as p on u.id = p.user_id 

@@ -2,6 +2,7 @@ const titleInput = document.getElementById('title');
 const ContentInput = document.getElementById('post-content');
 const imageInput = document.getElementById('img');
 const submit = document.getElementById('submit');
+const errors = document.getElementById('errors');
 let title;
 
 const validateInputs = (text) => {
@@ -25,9 +26,11 @@ const getPacket = (method) => {
   title = titleInput.value;
   const content = ContentInput.value;
   if (title.length > 300) {
-    console.log('So long title');
+    errors.textContent = 'So long title';
+    errors.style.display = 'block';
   } else if (!(validateInputs(title))) {
-    console.log('please type something...');
+    errors.textContent = 'please type something...';
+    errors.style.display = 'block';
   } else {
     const formData = new FormData();
 

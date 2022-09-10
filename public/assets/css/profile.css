@@ -2,3 +2,53 @@
     font-size: 30px;
     
 }
+/* Main profile */
+#user-image {
+    width: 300px;
+    height: 300px;
+
+}
+.post-div {
+    border: 2px solid black;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+}
+/* post Style */
+.user-post-div{
+    display: flex;
+/* border: 2px black solid; */
+
+}
+.user-image{
+    border-radius: 50%;
+     width: 50px;
+     height: 50px;
+   margin-top: 18px;
+}
+
+.username-post{
+margin-left: 10px;
+}
+.date{
+color:rgba(139, 133, 121, 0.616); 
+margin-top: 0px;
+font-size: 10px;
+margin-left: 100px;
+/* border: 2px black solid; */
+
+}
+.content {
+    font-size: 17px;
+    margin-top: 0px;
+}
+.post-image{
+    width: 350px;
+}
+#userPosts {
+    text-align: center;
+    cursor: pointer;
+}

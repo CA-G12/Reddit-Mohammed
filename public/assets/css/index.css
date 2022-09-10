@@ -10,7 +10,10 @@ body{
     justify-content: space-around;
     border: 2px solid black;
 }
-
+.nav{
+display: flex;
+justify-content: center;
+}
 .search-input{
     width: 20%; 
     padding: 0.6rem 2rem;
@@ -22,10 +25,12 @@ body{
 .search-input::placeholder{
     color: #d2b9b9;
 }
+#handleSearch{
+    display: none;
+}
  /* Start style posts */
  .user-info{
     display: flex;
-    justify-content: space-evenly;
 }
 .user-image{
     border-radius: 50%;
@@ -33,29 +38,52 @@ body{
      margin-top: 10px;
      height: 30px;
 }
-.post-header {
-    display: flex;
-    border: white 2px solid;
-    width:20%;
-    justify-content: space-evenly;
+.username {
+    margin-left: 5px;
 }
-.vote-div{
-    display: flex;
-    flex-direction: column;
-    border: 2px solid red;
-    width: 10%;
-
+.date{
+color:rgba(139, 133, 121, 0.616); 
+margin-top: 0px;
+font-size: 10px;
 }
 .post-container{
     display: flex;
     flex-direction: row;
     width: 70%;
-    border: 2px solid blue;
+    border-bottom: 2px solid blue;
     margin-top: 10px;
 }
+.vote-div{
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    margin: auto 0 auto 0;
+}
 .post-content{
-    margin-left: 5%;
+    margin-left: 8px;
+    margin-bottom: 10px;
+}
+.post-image{
+    width: 250px;
+
 }
 .all {
     width: 80%;
+    margin-left: 15px;
+}
+/* Search */
+.searchContainer {
+    position: relative;
+
+}
+#results {
+    background-color: gray;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+}
+#results p {
+    color: white;
+    border-bottom: 1px solid white;
 }

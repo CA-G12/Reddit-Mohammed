@@ -10,10 +10,7 @@ const checkUserData = (pattern, text, path, packet, userError) => {
     fetch(path, packet)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.massage) {
-          console.log(data);
-
           userError.style.display = 'block';
         } else {
           userError.style.display = 'none';
