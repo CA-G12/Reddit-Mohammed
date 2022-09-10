@@ -1,11 +1,15 @@
 body{
-    background-color: red;
-}
-.user-info{
-    display: flex;
-    justify-content: space-evenly;
+    background-color: white;
+    padding: 20px;
 }
 
+#posts{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-around;
+    border: 2px solid black;
+}
 
 .search-input{
     width: 20%; 
@@ -17,4 +21,41 @@ body{
 }
 .search-input::placeholder{
     color: #d2b9b9;
+}
+ /* Start style posts */
+ .user-info{
+    display: flex;
+    justify-content: space-evenly;
+}
+.user-image{
+    border-radius: 50%;
+     width: 30px;
+     margin-top: 10px;
+     height: 30px;
+}
+.post-header {
+    display: flex;
+    border: white 2px solid;
+    width:20%;
+    justify-content: space-evenly;
+}
+.vote-div{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid red;
+    width: 10%;
+
+}
+.post-container{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    border: 2px solid blue;
+    margin-top: 10px;
+}
+.post-content{
+    margin-left: 5%;
+}
+.all {
+    width: 80%;
 }

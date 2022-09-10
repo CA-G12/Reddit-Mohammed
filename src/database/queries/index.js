@@ -6,6 +6,7 @@ const {
   getAllPostsQuery, createPostQuery, getVoteQuery,
   addVoteQuery, updateVoteQuery,
   getVoteSum, getPostVotedByAuthUser, searchQuery,
+  updatePostQuery,
 } = require('./HomePageQueries');
 
 const {
@@ -38,4 +39,5 @@ module.exports = {
   addCommentQuery,
   searchQuery,
   updateImageQuery,
+  updatePostQuery,
 };

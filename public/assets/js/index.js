@@ -33,10 +33,13 @@ const renderPosts = (object) => {
   console.log(object);
   const postId = object.post_id;
   const userId = object.user_id;
-  const userInfoContainer = createElement('div');
+
   // User information
+  const divPostHeader = createElement('div', '', ['post-header']);
   const usernameEle = createElement('p', object.username);
-  const userImgEle = createElement('img', object.userimage, '', object.has_image);
+  const userImgEle = createElement('img', object.userimage, ['user-image'], object.has_image);
+  const dateEle = createElement('p', object.curr_date, ['date']);
+
   userImgEle.addEventListener('click', () => {
     window.location.href = `./pages/profile.html?id=${userId}`;
   });
@@ -62,8 +65,6 @@ const renderPosts = (object) => {
     fetch('/vote/add', getPacket(postId, '1')).then((data) => data.json()).then((data) => {
       if (data === 0 || data === 1) {
         voteEle.textContent = (+voteEle.textContent) + 1;
-      } else {
-        voteEle.textContent = (+voteEle.textContent) + 0;
       }
     });
   });
@@ -75,20 +76,29 @@ const renderPosts = (object) => {
     fetch('/vote/add', getPacket(postId, '-1')).then((data) => data.json()).then((data) => {
       if (data === 0 || data === -1) {
         voteEle.textContent = (+voteEle.textContent) - 1;
-      } else {
-        voteEle.textContent = (+voteEle.textContent) + 0;
       }
     });
   });
-  userInfoContainer.append(
-    usernameEle,
-    userImgEle,
+  // Vote Container
+  const voteDiv = createElement('div', '', ['vote-div']);
+  voteDiv.append(addVoteEle, voteEle, deleteVoteEle);
+  // Container
+  const divPostContainer = createElement('div', '', ['post-container']);
+  // Content
+  const divPostContent = createElement('div', '', ['post-content']);
+  // userInfo
+  const divUserInfo = createElement('div', '', ['user-info']);
+  divUserInfo.append(userImgEle, usernameEle);
+  // Div for userInfo and Post Content
+  const div = createElement('div', '', ['all']);
+  div.append(divUserInfo, divPostContent);
+  divPostContent.append(
+    divPostHeader,
+    dateEle,
     postContentEle,
-    addVoteEle,
-    voteEle,
-    deleteVoteEle,
   );
-  postsContainer.append(userInfoContainer);
+  divPostContainer.append(voteDiv, div);
+  postsContainer.append(divPostContainer);
 };
 // Get all posts
 fetch('/posts').then((data) => data.json()).then((posts) => {
@@ -123,6 +133,7 @@ const renderSearchDom = (result) => {
   }
   containerSearchResult.append(option);
 };
+// Search
 searchInput.addEventListener('input', () => {
   const searchValue = searchInput.value;
   if (searchValue.trim().length > 0) {

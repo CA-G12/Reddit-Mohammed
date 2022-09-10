@@ -9,6 +9,7 @@ const logout = require('./Home/logout');
 
 const getAllPosts = require('./Home/getAllPosts');
 const createPost = require('./Home/createPost');
+const updatePost = require('./Home/updatePost');
 const handleVote = require('./Home/votes/handleVote');
 const search = require('./Home/search');
 
@@ -41,4 +42,5 @@ module.exports = {
   addComment,
   search,
   handleFile,
+  updatePost,
 };
