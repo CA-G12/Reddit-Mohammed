@@ -4,18 +4,18 @@ const verifyToken = require('../middleware/verifyToken');
 const uploadFile = require('../middleware/upload');
 // Controllers
 const {
-  signup, checkUsername, checkUserEmail, login,
-  checkUserAuth, getAllPosts, createPost, getPost,
-  getComments, getUserPosts, handleVote,
-  logout, updateBio, deletePost,
-  getBio, addComment,
-  search, handleFile,
+  signup, checkUsername, checkUserEmail,
+  login, checkUserAuth, getAllPosts,
+  createPost, getPost, getComments,
+  getUserPosts, handleVote, logout, updateBio, deletePost,
+  getBio, addComment, search, handleFile, updatePost
 } = require('../controller');
 
 // Home
 router.get('/checkUserAuth', verifyToken, checkUserAuth);
 router.get('/posts', verifyToken, getAllPosts);
-router.post('/post', verifyToken, createPost);
+router.post('/post', verifyToken, uploadFile().single('file'), createPost);
+router.put('/post/:id', verifyToken, updatePost);
 router.get('/search/:value', search);
 // votes
 router.post('/vote/add', verifyToken, handleVote);
@@ -34,6 +34,7 @@ router.get('/logout', logout);
 router.get('/post/:id', getPost);
 router.delete('/post/delete/:postId', deletePost);
 router.get('/comments/:id', getComments);
+
 router.post('/comment/add', verifyToken, addComment);
 // Profile
 router.get('/user/posts/:id?', verifyToken, getUserPosts);// 1

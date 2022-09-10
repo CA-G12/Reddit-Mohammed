@@ -13,8 +13,12 @@ const getPostVotedByAuthUser = (userId) => connection.query(`select user_id, pos
 from votes WHERE user_id = $1 ;`, [userId]);
 
 const createPostQuery = (title, content, image, userId) => connection.query(`insert into posts 
-(title,content,image,user_id,community_id)
-values ($1,$2,$3,$4,$5) returning *`, [title, content, image, userId, 1]);
+(title,content,image,user_id)
+values ($1,$2,$3,$4) returning *`, [title, content, image, userId]);
+
+const updatePostQuery = (title, content, image, userId, postId) => connection.query(`
+update posts set title = $1, content = $2, image = $3 , user_id = $4 where id = $5 returning *
+`, [title, content, image, userId, postId]);
 
 const searchQuery = (searchValue) => connection.query(
   `select u.username, u.id as user_id , p.title, p.id  as post_id
@@ -38,6 +42,7 @@ UPDATE votes set vote = (select vote + $1 from votes where post_id = $2 and user
 const getVoteSum = (postId) => connection.query(`select sum(vote) as totalVotes 
 from votes where post_id = $1 
 group by post_id`, [postId]);
+
 module.exports = {
   getAllPostsQuery,
   getPostVotedByAuthUser,
@@ -47,4 +52,5 @@ module.exports = {
   updateVoteQuery,
   getVoteSum,
   searchQuery,
+  updatePostQuery,
 };

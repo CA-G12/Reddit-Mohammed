@@ -40,6 +40,10 @@ const renderDom = (post, user, isAuth) => {
         totalPostEle.textContent = (+totalPostEle.textContent) - 1;
       });
     });
+    UpdatePostBtn.addEventListener('click', () => {
+      const { id } = post;
+      window.location.href = `CreatePost.html?id=${id}`;
+    });
     postContainer.append(deletePostBtn, UpdatePostBtn);
   }
   userPostsContainer.append(userImageEle, postContainer);
@@ -115,6 +119,7 @@ uploadBtn.addEventListener('click', (e) => {
     body: formData,
   };
   fetch('/user/upload', packet).then((res) => res.json()).then((data) => {
+    console.log(` /images/${data.path}`);
     userImageEle.src = ` /images/${data.path}`;
   });
 });

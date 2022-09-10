@@ -1,8 +1,9 @@
 const connection = require('../config/connection');
 
 const getPostQuery = (id) => connection.query(`select p.id as post_id,
- p.title, p.image as postImage ,p.content,to_char(p.created_at,'YYYY-MM-DD at HH:MI:SS AM') as Curr_date, 
- u.id as userId,u.username,u.image as userImage
+p.title, p.image as postImage ,p.content,
+to_char(p.created_at,'YYYY-MM-DD at HH:MI:SS AM') as Curr_date, 
+u.id as userId,u.username,u.image as userImage, u.has_image
 from posts as p join users as u on u.id = p.user_id where p.id = $1 `, [id]);
 
 const getCommentsQuery = (id) => connection.query(`select c.content as commentContent,
@@ -16,4 +17,6 @@ const addCommentQuery = (userId, postId, comment) => connection.query(` insert i
 
 const deletePostQuery = (postId) => connection.query('delete from posts where id = $1', [postId]);
 
-module.exports = { getPostQuery, getCommentsQuery, deletePostQuery, addCommentQuery };
+module.exports = {
+  getPostQuery, getCommentsQuery, deletePostQuery, addCommentQuery,
+};
