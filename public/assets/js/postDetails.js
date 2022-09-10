@@ -10,15 +10,13 @@ const addCommentBtn = document.getElementById('addCommentBtn');
 const commentContainer = document.getElementById('commentContainer');
 
 fetch(`/post/${postId}`).then((res) => res.json()).then((res) => {
-  if (res.has_image) {
-    userImageEle.src = res.userimage;
-  } else {
-    userImageEle.src = res.userimage;
+  if (res.postimage) {
+    postImageEle.src = res.postimage;
   }
+  userImageEle.src = res.userimage;
   usernameEle.textContent = res.username;
   dateEle.textContent = res.curr_date;
   contentEle.textContent = res.content;
-  postImageEle.src = res.postimage;
 });
 const renderDom = (comment) => {
   const userImg = createElement('img', comment.userimage);
