@@ -9,7 +9,7 @@ const {
   login, checkUserAuth, getAllPosts,
   createPost, getPost, getComments,
   getUserPosts, handleVote, logout, updateBio, deletePost,
-  getBio, addComment, search, handleFile, updatePost
+  getBio, addComment, search, handleFile, updatePost,
 } = require('../controller');
 
 // Home
