@@ -11,23 +11,23 @@ const uploadImgInput = document.getElementById('uploadImgInput');
 
 // Handle Dom
 const renderDom = (post, user, isAuth) => {
-  const postContainer = createElement('div');
-  const userImageForPost = createElement('img', user.image, '', false);
-  const userNameEleForPost = createElement('p', user.username);
-  const createdAtEle = createElement('p', post.to_char);
-  const postTitleEle = createElement('h3', post.title);
-  const postContentEle = createElement('p', post.content);
-
+  const postContainer = createElement('div', '', ['post-div']);
+  const userImageForPost = createElement('img', user.image, ['user-image'], false);
+  const userNameEleForPost = createElement('p', user.username, ['username-post']);
+  const createdAtEle = createElement('p', post.to_char, ['date']);
+  const postTitleEle = createElement('h4', post.title);
+  const postContentEle = createElement('p', post.content, ['content']);
+  const divUser = createElement('div', '', ['user-post-div']);
+  divUser.append(userImageForPost, userNameEleForPost);
   // Appending
   postContainer.append(
-    userImageForPost,
-    userNameEleForPost,
+    divUser,
     createdAtEle,
     postTitleEle,
     postContentEle,
   );
   if (post.image !== null) {
-    const postImage = createElement('img', post.image);
+    const postImage = createElement('img', post.image, ['post-image']);
     postContainer.append(postImage);
   }
   if (isAuth) {
@@ -46,7 +46,7 @@ const renderDom = (post, user, isAuth) => {
     });
     postContainer.append(deletePostBtn, UpdatePostBtn);
   }
-  userPostsContainer.append(userImageEle, postContainer);
+  userPostsContainer.append(postContainer);
 };
 let bioBtn;
 const getUserInfo = (data, aboutMassage, isAuth) => {
@@ -87,6 +87,8 @@ const displayAllPosts = (data, user, isAuth) => {
 };
 if (id) {
   // other users profile
+  uploadBtn.style.display = 'none';
+  uploadImgInput.style.display = 'none';
   fetch(`/user/posts/${id}`).then((result) => result.json()).then((result) => {
     getUserInfo(result, 'No Information Provided From This User', false);
     if (result.posts.length === 0) {

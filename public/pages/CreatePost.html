@@ -8,15 +8,18 @@
     <title>Create Your Post</title>
 </head>
 <body>
-<nav>
+<nav class="main-nav">
     <a href="./profile.html">My Profile</a>
     <a href="../index.html">Home</a>
 </nav>
-    <h1>Create a post</h1>
+    <h1>Create a Post</h1>
+    <div class="inputs">
     <input type="text" id="title" placeholder="title">
     <textarea name="content" id="post-content" cols="30" rows="10" placeholder="Your Post"></textarea>
    <input type="file" name="file" id="img" placeholder="add your image">
    <button id="submit">Post</button>
+   <p id="errors"></p>
+</div>
 <script src="../assets/js/createPost.js"></script>
 </body>
 </html>

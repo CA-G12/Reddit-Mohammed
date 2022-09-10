@@ -17,7 +17,7 @@ router.get('/checkUserAuth', verifyToken, checkUserAuth);
 router.get('/posts', verifyToken, getAllPosts);
 router.post('/post', verifyToken, uploadFile().single('file'), cloudinaryUpload, createPost);
 router.put('/post/:id', verifyToken, updatePost);
-router.get('/search/:value', search);
+router.get('/search/:value', verifyToken, search);
 // votes
 router.post('/vote/add', verifyToken, handleVote);
 
