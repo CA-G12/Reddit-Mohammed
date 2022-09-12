@@ -57,4 +57,5 @@ addCommentBtn.addEventListener('click', () => {
       renderDom(newComment);
     });
   });
+  commentInput.value = '';
 });
