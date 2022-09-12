@@ -65,7 +65,7 @@ const getUserInfo = (data, aboutMassage, isAuth) => {
   userNameEle.textContent = data.user[0].username;
   if (isAuth) {
     // Edit bio button for auth user
-    bioBtn = createElement('button', 'Add Something');
+    bioBtn = createElement('button', 'Add Something', ['bio-btn']);
     userInfoSection.append(bioBtn);
     if (data.user[0].about) {
       bioBtn.textContent = 'Edit Your Bio';

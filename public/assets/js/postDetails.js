@@ -2,6 +2,7 @@
 const postId = window.location.href.split('=')[1];
 const userImageEle = document.getElementById('user-Image');
 const usernameEle = document.getElementById('username');
+const postTitleEle = document.getElementById('post-title');
 const dateEle = document.getElementById('date');
 const contentEle = document.getElementById('content');
 const postImageEle = document.getElementById('post-image');
@@ -17,13 +18,17 @@ fetch(`/post/${postId}`).then((res) => res.json()).then((res) => {
   usernameEle.textContent = res.username;
   dateEle.textContent = res.curr_date;
   contentEle.textContent = res.content;
+  postTitleEle.textContent = res.title;
 });
 const renderDom = (comment) => {
-  const userImg = createElement('img', comment.userimage);
+  const divUserInfo = createElement('div', '', ['user-infoContainer'])
+  const userImg = createElement('img', comment.userimage, ['user-image']);
   const username = createElement('p', comment.username);
   const commentContent = createElement('p', comment.commentcontent);
-  const div = createElement('div');
-  div.append(userImg, username, commentContent);
+  const div = createElement('div', '', ['comment']);
+  divUserInfo.append(userImg, username);
+
+  div.append(divUserInfo, commentContent);
   commentContainer.appendChild(div);
 };
 
