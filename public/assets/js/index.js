@@ -64,12 +64,16 @@ const renderPosts = (object) => {
   }
   // add vote
   addVoteEle.addEventListener('click', () => {
-    addVoteEle.style.background = '#9c3c4f';
-    deleteVoteEle.style.background = 'white';
-
     fetch('/vote/add', getPacket(postId, '1')).then((data) => data.json()).then((data) => {
+      if (data === 'Not auth') {
+        addVoteEle.style.background = 'white';
+        deleteVoteEle.style.background = 'white';
+        return;
+      }
       if (data === 0 || data === 1) {
         voteEle.textContent = (+voteEle.textContent) + 1;
+        addVoteEle.style.background = '#9c3c4f';
+        deleteVoteEle.style.background = 'white';
       }
     });
   });
@@ -79,8 +83,15 @@ const renderPosts = (object) => {
     addVoteEle.style.background = 'white';
 
     fetch('/vote/add', getPacket(postId, '-1')).then((data) => data.json()).then((data) => {
+      if (data === 'Not auth') {
+        deleteVoteEle.style.background = 'white';
+        addVoteEle.style.background = 'white';
+        return;
+      }
       if (data === 0 || data === -1) {
         voteEle.textContent = (+voteEle.textContent) - 1;
+        deleteVoteEle.style.background = 'blue';
+        addVoteEle.style.background = 'white';
       }
     });
   });
