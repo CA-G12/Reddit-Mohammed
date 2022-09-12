@@ -113,19 +113,21 @@ if (id) {
 }
 uploadBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  if (uploadImgInput.files.length === 0) {
-    errorUpload.style.display = 'block';
-    return;
-  }
-  errorUpload.style.display = 'none';
-  const formData = new FormData();
+  if (uploadImgInput.files.length !== 0) {
+    console.log('ss');
+    errorUpload.style.display = 'none';
+    const formData = new FormData();
 
-  formData.append('file', uploadImgInput.files[0]);
-  const packet = {
-    method: 'POST',
-    body: formData,
-  };
-  fetch('/user/upload', packet).then((res) => res.json()).then((data) => {
-    userImageEle.src = data.path;
-  });
+    formData.append('file', uploadImgInput.files[0]);
+    const packet = {
+      method: 'POST',
+      body: formData,
+    };
+    fetch('/user/upload', packet).then((res) => res.json()).then((data) => {
+      userImageEle.src = data.path;
+    });
+  } else {
+    console.log('bb');
+    errorUpload.style.display = 'block';
+  }
 });
