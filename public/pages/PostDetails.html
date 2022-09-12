@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/createPost.css">
     <link rel="stylesheet" href="../assets/css/postDetails.css">
-    <link rel="stylesheet" href="../assets/css/index.css">
     <title>Post Details</title>
 </head>
 <body>
@@ -16,15 +15,18 @@
     </nav>
 
     <div class = 'user-info'>
-    <img id="user-Image" alt="userImage">
+    <div>
+        <img id="user-Image" alt="userImage">
     <h4 id="username"></h4>
+</div>
     <p id="date"></p>
     <h2 id="post-title"></h2>
     <p id="content"></p>
     <img id="post-image"></img>
     <input type="text" name="comment" id="comment" placeholder="add Your Comment">
-<button id="addCommentBtn">Save</button>
-<section id="commentContainer"></section>
+    <button id="addCommentBtn">Save</button>
+<h1 id="h1-comments">Comments</h1>
+    <section id="commentContainer"></section>
     </div>
 
 <script src="../assets/js/util/createElement.js"></script>
