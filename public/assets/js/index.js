@@ -163,7 +163,6 @@ searchInput.addEventListener('input', () => {
   const searchValue = searchInput.value;
   if (searchValue.trim().length > 0) {
     fetch(`/search/${searchValue}`).then((data) => data.json()).then((data) => {
-      console.log(data);
       if (Array.isArray(data)) {
         const results = data.map((i) => {
           if (i.username.includes(searchValue)) {
