@@ -114,7 +114,6 @@ if (id) {
 uploadBtn.addEventListener('click', (e) => {
   e.preventDefault();
   if (uploadImgInput.files.length !== 0) {
-    console.log('ss');
     errorUpload.style.display = 'none';
     const formData = new FormData();
 
@@ -127,7 +126,6 @@ uploadBtn.addEventListener('click', (e) => {
       userImageEle.src = data.path;
     });
   } else {
-    console.log('bb');
     errorUpload.style.display = 'block';
   }
 });

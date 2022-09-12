@@ -23,33 +23,30 @@ titleInput.addEventListener('input', () => {
 });
 
 const getPacket = (method) => {
-  title = titleInput.value;
   const content = ContentInput.value;
+  const formData = new FormData();
+  if (imageInput.files.length !== 0) {
+    formData.append('file', imageInput.files[0]);
+  }
+  formData.append('title', title);
+  formData.append('content', content);
+  const packet = {
+    method,
+    body: formData,
+  };
+  return packet;
+};
+
+const urlId = window.location.href.split('=')[1];
+submit.addEventListener('click', () => {
+  title = titleInput.value;
   if (title.length > 300) {
     errors.textContent = 'So long title';
     errors.style.display = 'block';
   } else if (!(validateInputs(title))) {
     errors.textContent = 'please type something...';
     errors.style.display = 'block';
-  } else {
-    const formData = new FormData();
-
-    if (imageInput.files.length !== 0) {
-      formData.append('file', imageInput.files[0]);
-    }
-    formData.append('title', title);
-    formData.append('content', content);
-    const packet = {
-      method,
-      body: formData,
-    };
-    return packet;
-  }
-};
-
-const urlId = window.location.href.split('=')[1];
-submit.addEventListener('click', () => {
-  if (urlId) {
+  } else if (urlId) {
     fetch(`/post/${urlId}`, getPacket('PUT')).then((res) => res.json()).then(() => {
       window.location.href = 'profile.html';
     });
