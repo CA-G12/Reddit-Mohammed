@@ -68,3 +68,8 @@ margin-bottom: 10px;
     text-align: center;
     cursor: pointer;
 }
+#error-upload {
+    color: red;
+    display: none;
+    
+}

@@ -8,7 +8,7 @@ const totalPostEle = document.getElementById('total-post');
 const userPostsContainer = document.getElementById('userPosts');
 const uploadBtn = document.getElementById('uploadBtn');
 const uploadImgInput = document.getElementById('uploadImgInput');
-
+const errorUpload = document.getElementById('error-upload');
 // Handle Dom
 const renderDom = (post, user, isAuth) => {
   const postContainer = createElement('div', '', ['post-div']);
@@ -113,6 +113,11 @@ if (id) {
 }
 uploadBtn.addEventListener('click', (e) => {
   e.preventDefault();
+  if (uploadImgInput.files.length === 0) {
+    errorUpload.style.display = 'block';
+    return;
+  }
+  errorUpload.style.display = 'none';
   const formData = new FormData();
 
   formData.append('file', uploadImgInput.files[0]);
